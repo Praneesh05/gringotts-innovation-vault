@@ -2,41 +2,67 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+/* Magical Design System - Gringotts Innovation Vault
+Colors inspired by wizarding world: Golden magic, Deep navy mystery, Parchment wisdom
 All colors MUST be HSL.
 */
 
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
+
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Magical Color Palette */
+    --background: 28 25% 95%; /* Warm parchment */
+    --foreground: 220 50% 15%; /* Deep magical navy */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 28 35% 97%;
+    --card-foreground: 220 50% 15%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 28 35% 97%;
+    --popover-foreground: 220 50% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 45 85% 60%; /* Magical gold */
+    --primary-foreground: 220 50% 15%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 220 60% 25%; /* Deep navy */
+    --secondary-foreground: 45 85% 90%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 28 20% 90%;
+    --muted-foreground: 220 30% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 45 85% 60%;
+    --accent-foreground: 220 50% 15%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 28 35% 97%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 28 25% 80%;
+    --input: 28 25% 85%;
+    --ring: 45 85% 60%;
 
-    --radius: 0.5rem;
+    /* Magical Effects */
+    --magical-gold: 45 85% 60%;
+    --magical-gold-glow: 45 100% 70%;
+    --magical-navy: 220 60% 25%;
+    --magical-navy-deep: 220 70% 15%;
+    --parchment: 28 25% 95%;
+    --parchment-aged: 35 30% 85%;
+    
+    /* Gradients */
+    --gradient-magical: linear-gradient(135deg, hsl(var(--magical-gold)), hsl(var(--magical-gold-glow)));
+    --gradient-mystical: linear-gradient(180deg, hsl(var(--magical-navy-deep)), hsl(var(--magical-navy)));
+    --gradient-parchment: linear-gradient(145deg, hsl(var(--parchment)), hsl(var(--parchment-aged)));
+    
+    /* Shadows & Glows */
+    --shadow-magical: 0 0 30px hsl(var(--magical-gold) / 0.4);
+    --shadow-mystical: 0 10px 40px hsl(var(--magical-navy) / 0.3);
+    --glow-golden: 0 0 20px hsl(var(--magical-gold-glow) / 0.6);
+    
+    /* Animations */
+    --transition-magical: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-enchanted: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -56,41 +82,45 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    /* Dark magical theme - Enchanted library at night */
+    --background: 220 70% 8%; /* Deep mystical night */
+    --foreground: 45 85% 90%; /* Golden glow text */
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 220 60% 12%;
+    --card-foreground: 45 85% 90%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 220 60% 12%;
+    --popover-foreground: 45 85% 90%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 45 85% 70%;
+    --primary-foreground: 220 70% 8%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 220 40% 20%;
+    --secondary-foreground: 45 85% 90%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 220 50% 15%;
+    --muted-foreground: 45 60% 70%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 45 85% 70%;
+    --accent-foreground: 220 70% 8%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 50%;
+    --destructive-foreground: 45 85% 90%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: 220 40% 20%;
+    --input: 220 40% 20%;
+    --ring: 45 85% 70%;
+    
+    /* Dark magical adjustments */
+    --magical-gold: 45 85% 70%;
+    --magical-gold-glow: 45 100% 80%;
+    --magical-navy: 220 60% 15%;
+    --magical-navy-deep: 220 70% 8%;
+    --parchment: 220 60% 12%;
+    --parchment-aged: 220 50% 15%;
+    
+    --shadow-magical: 0 0 40px hsl(var(--magical-gold) / 0.6);
+    --glow-golden: 0 0 30px hsl(var(--magical-gold-glow) / 0.8);
   }
 }
 
@@ -100,6 +130,84 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-serif;
+    background-image: 
+      radial-gradient(circle at 20% 80%, hsl(var(--magical-gold) / 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, hsl(var(--magical-navy) / 0.05) 0%, transparent 50%);
+  }
+  
+  /* Magical Typography */
+  .font-magical {
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+  }
+  
+  .font-serif {
+    font-family: 'Crimson Text', serif;
+  }
+  
+  /* Magical Effects */
+  .magical-glow {
+    filter: drop-shadow(var(--glow-golden));
+  }
+  
+  .magical-float {
+    animation: magical-float 3s ease-in-out infinite;
+  }
+  
+  .sparkle-effect {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .sparkle-effect::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, hsl(var(--magical-gold) / 0.3), transparent);
+    animation: sparkle-sweep 2s infinite;
+  }
+  
+  /* Scroll Animations */
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: var(--transition-enchanted);
+  }
+  
+  .scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@layer utilities {
+  /* Magical Keyframes */
+  @keyframes magical-float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(1deg); }
+  }
+  
+  @keyframes sparkle-sweep {
+    0% { left: -100%; }
+    100% { left: 100%; }
+  }
+  
+  @keyframes book-open {
+    0% { transform: rotateY(0deg); }
+    100% { transform: rotateY(-15deg); }
+  }
+  
+  @keyframes candleflicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+  }
+  
+  @keyframes particle-float {
+    0% { transform: translateY(0px) scale(1); opacity: 1; }
+    100% { transform: translateY(-100px) scale(0); opacity: 0; }
   }
 }
