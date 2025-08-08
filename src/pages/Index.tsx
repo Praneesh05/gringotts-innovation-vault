@@ -6,6 +6,7 @@ import { ScrollContainer } from '@/components/ScrollContainer';
 import { RegistrationButton } from '@/components/RegistrationButton';
 import { InteractiveBook } from '@/components/InteractiveBook';
 import { MagicalCard } from '@/components/MagicalCard';
+import { EnchantedBackground } from '@/components/EnchantedBackground';
 import gringottsLogo from '@/assets/gringotts-logo.jpg';
 
 const Index = () => {
@@ -99,14 +100,18 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-parchment to-parchment-aged">
-      {/* Header */}
-      <motion.header
-        className="sticky top-0 z-40 bg-gradient-parchment border-b border-magical-gold/30 backdrop-blur-sm"
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.6 }}
-      >
+    <div className="min-h-screen relative">
+      {/* Enchanted Background with Chandeliers and Candles */}
+      <EnchantedBackground />
+      
+      <div className="relative z-10">
+        {/* Header */}
+        <motion.header
+          className="sticky top-0 z-40 bg-magical-navy-deep/70 border-b border-magical-gold/30 backdrop-blur-sm"
+          initial={{ y: -100 }}
+          animate={{ y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <motion.img
             src={gringottsLogo}
@@ -125,13 +130,13 @@ const Index = () => {
         </div>
       </motion.header>
 
-      {/* Navigation */}
-      <motion.nav
-        className="sticky top-20 z-30 bg-magical-navy/10 backdrop-blur-sm border-b border-magical-gold/20"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.5 }}
-      >
+        {/* Navigation */}
+        <motion.nav
+          className="sticky top-20 z-30 bg-magical-navy-deep/50 backdrop-blur-sm border-b border-magical-gold/20"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+        >
         <div className="container mx-auto px-4 py-2">
           <div className="flex flex-wrap justify-center gap-4 text-sm">
             {[
@@ -144,8 +149,8 @@ const Index = () => {
               <motion.button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="font-magical text-magical-navy hover:text-magical-gold transition-colors px-3 py-1 rounded"
-                whileHover={{ scale: 1.05 }}
+                className="font-magical text-magical-gold hover:text-magical-gold-glow transition-colors px-3 py-1 rounded"
+                whileHover={{ scale: 1.05, textShadow: "0 0 10px hsl(var(--magical-gold-glow))" }}
                 whileTap={{ scale: 0.95 }}
               >
                 {item.label}
@@ -155,26 +160,26 @@ const Index = () => {
         </div>
       </motion.nav>
 
-      {/* Main Content */}
-      <main className="container mx-auto px-4 py-8 space-y-16">
-        {/* Hero Section */}
-        <motion.section
-          className="text-center py-12"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <h2 className="text-4xl md:text-6xl font-magical text-magical-gold mb-4 drop-shadow-glow">
-            Where Genius Dares
-          </h2>
-          <h3 className="text-2xl md:text-4xl font-magical text-magical-navy mb-6">
-            and Magic Decides
-          </h3>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Welcome to the most prestigious innovation challenge in the wizarding world. 
-            Where brilliant minds converge to unlock the secrets of magical technology and shape the future.
-          </p>
-        </motion.section>
+        {/* Main Content */}
+        <main className="container mx-auto px-4 py-8 space-y-16">
+          {/* Hero Section */}
+          <motion.section
+            className="text-center py-12"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-4xl md:text-6xl font-magical text-magical-gold mb-4 drop-shadow-glow">
+              Where Genius Dares
+            </h2>
+            <h3 className="text-2xl md:text-4xl font-magical text-magical-gold-glow mb-6">
+              and Magic Decides
+            </h3>
+            <p className="text-lg text-foreground max-w-3xl mx-auto leading-relaxed opacity-90">
+              Welcome to the most prestigious innovation challenge in the wizarding world. 
+              Where brilliant minds converge to unlock the secrets of magical technology and shape the future.
+            </p>
+          </motion.section>
 
         {/* Event Overview */}
         <section id="overview">
@@ -447,6 +452,7 @@ const Index = () => {
           </div>
         </div>
       </motion.footer>
+      </div>
     </div>
   );
 };

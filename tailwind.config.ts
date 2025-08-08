@@ -112,20 +112,37 @@ export default {
 					'100%': { transform: 'rotateY(-15deg) scale(1)' }
 				},
 				'candleflicker': {
-					'0%, 100%': { opacity: '1' },
-					'50%': { opacity: '0.8' }
+					'0%, 100%': { 
+						opacity: '1',
+						filter: 'drop-shadow(0 0 15px hsl(30 100% 70% / 0.6))'
+					},
+					'25%': { 
+						opacity: '0.9',
+						filter: 'drop-shadow(0 0 20px hsl(30 100% 70% / 0.8))'
+					},
+					'50%': { 
+						opacity: '0.95',
+						filter: 'drop-shadow(0 0 10px hsl(30 100% 70% / 0.4))'
+					},
+					'75%': { 
+						opacity: '0.85',
+						filter: 'drop-shadow(0 0 25px hsl(30 100% 70% / 0.9))'
+					}
 				},
-				'particle-float': {
-					'0%': { transform: 'translateY(0px) scale(1)', opacity: '1' },
-					'100%': { transform: 'translateY(-100px) scale(0)', opacity: '0' }
+				'chandelier-sway': {
+					'0%, 100%': { transform: 'rotate(0deg) translateY(0px)' },
+					'25%': { transform: 'rotate(0.5deg) translateY(-2px)' },
+					'50%': { transform: 'rotate(0deg) translateY(-1px)' },
+					'75%': { transform: 'rotate(-0.5deg) translateY(-2px)' }
 				},
-				'fade-in-up': {
-					'0%': { opacity: '0', transform: 'translateY(30px)' },
-					'100%': { opacity: '1', transform: 'translateY(0)' }
+				'chain-swing': {
+					'0%, 100%': { transform: 'rotate(0deg)' },
+					'50%': { transform: 'rotate(1deg)' }
 				},
-				'glow-pulse': {
-					'0%, 100%': { filter: 'drop-shadow(0 0 10px hsl(var(--magical-gold) / 0.5))' },
-					'50%': { filter: 'drop-shadow(0 0 30px hsl(var(--magical-gold) / 0.8))' }
+				'candle-wax-drip': {
+					'0%': { height: '0px', opacity: '0' },
+					'50%': { opacity: '1' },
+					'100%': { height: '20px', opacity: '0.7' }
 				}
 			},
 			animation: {
@@ -135,6 +152,9 @@ export default {
 				'sparkle-sweep': 'sparkle-sweep 2s infinite',
 				'book-open': 'book-open 0.8s ease-out forwards',
 				'candleflicker': 'candleflicker 2s ease-in-out infinite',
+				'chandelier-sway': 'chandelier-sway 4s ease-in-out infinite',
+				'chain-swing': 'chain-swing 3s ease-in-out infinite',
+				'candle-wax-drip': 'candle-wax-drip 4s ease-out infinite',
 				'particle-float': 'particle-float 3s ease-out infinite',
 				'fade-in-up': 'fade-in-up 0.6s ease-out',
 				'glow-pulse': 'glow-pulse 2s ease-in-out infinite'
